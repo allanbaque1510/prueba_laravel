@@ -35,13 +35,9 @@ class CineController extends Controller
     }
     
     public function search(Request $request){
-        $id= $request->id;
         $nombre= $request->nombre;
-        
-  
-        $productos = Pelicula::where('id', $id)
-        ->orWhere('nombre', $nombre)
-        ->get();
+        // return ($nombre);
+        $productos = Pelicula::where('nombre','LIKE','%'.$nombre.'%')->get();
 
         return $productos;
     }
